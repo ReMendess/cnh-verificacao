@@ -8,9 +8,11 @@ import re
 
 # Configurar AWS
 
-ACCESS_ID = "AKIASVQKHRNQXQCEESUN"
-ACCESS_KEY = "gBDUaw7rPS3hdXK5NkwLXhxY/XWhiqZc6k9+K5FG"
-region = "us-east-1"
+import os
+
+ACCESS_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+region = os.environ.get("AWS_REGION")
 
 session = boto3.Session(aws_access_key_id=ACCESS_ID, aws_secret_access_key=ACCESS_KEY)
 textract_client = session.client('textract', region_name=region)
